@@ -15,7 +15,7 @@ public class LibrarianDao {
 		int status=0;
 		try{
 			Connection con=DB.getCon();
-			PreparedStatement ps=con.prepareStatement("insert into e_librarian(name,email,password,mobile) values(?,?,?,?)");
+			PreparedStatement ps=con.prepareStatement("insert into E_LIBRARIAN(name,email,password,mobile) values(?,?,?,?)");
 			ps.setString(1,bean.getName());
 			ps.setString(2,bean.getEmail());
 			ps.setString(3,bean.getPassword());
@@ -31,7 +31,7 @@ public class LibrarianDao {
 		int status=0;
 		try{
 			Connection con=DB.getCon();
-			PreparedStatement ps=con.prepareStatement("update e_librarian set name=?,email=?,password=?,mobile=? where id=?");
+			PreparedStatement ps=con.prepareStatement("update E_LIBRARIAN set name=?,email=?,password=?,mobile=? where id=?");
 			ps.setString(1,bean.getName());
 			ps.setString(2,bean.getEmail());
 			ps.setString(3,bean.getPassword());
@@ -48,7 +48,7 @@ public class LibrarianDao {
 		List<LibrarianBean> list=new ArrayList<LibrarianBean>();
 		try{
 			Connection con=DB.getCon();
-			PreparedStatement ps=con.prepareStatement("select * from e_librarian");
+			PreparedStatement ps=con.prepareStatement("select * from E_LIBRARIAN");
 			ResultSet rs=ps.executeQuery();
 			while(rs.next()){
 				LibrarianBean bean=new LibrarianBean();
@@ -69,7 +69,7 @@ public class LibrarianDao {
 		LibrarianBean bean=new LibrarianBean();
 		try{
 			Connection con=DB.getCon();
-			PreparedStatement ps=con.prepareStatement("select * from e_librarian where id=?");
+			PreparedStatement ps=con.prepareStatement("select * from E_LIBRARIAN where id=?");
 			ps.setInt(1,id);
 			ResultSet rs=ps.executeQuery();
 			if(rs.next()){
@@ -89,7 +89,7 @@ public class LibrarianDao {
 		int status=0;
 		try{
 			Connection con=DB.getCon();
-			PreparedStatement ps=con.prepareStatement("delete from e_librarian where id=?");
+			PreparedStatement ps=con.prepareStatement("delete from E_LIBRARIAN where id=?");
 			ps.setInt(1,id);
 			status=ps.executeUpdate();
 			con.close();
@@ -103,7 +103,7 @@ public class LibrarianDao {
 		boolean status=false;
 		try{
 			Connection con=DB.getCon();
-			PreparedStatement ps=con.prepareStatement("select * from e_librarian where email=? and password=?");
+			PreparedStatement ps=con.prepareStatement("select * from E_LIBRARIAN where email=? and password=?");
 			ps.setString(1,email);
 			ps.setString(2,password);
 			ResultSet rs=ps.executeQuery();
